@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import DashboardOverview from './DashboardOverview';
+import Announcements from './Announcements';
 
 const StudentDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -26,8 +27,10 @@ const StudentDashboard = () => {
     switch (activeTab) {
       case 'dashboard':
         return <DashboardOverview profileData={dummyProfileData} setActiveTab={setActiveTab} />;
+      case 'announcements':
+        return <Announcements />;
       default:
-        return
+        return null;
     }
   };
 
