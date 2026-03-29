@@ -15,6 +15,7 @@ import { Link } from 'react-router-dom';
 import DashboardOverview from './DashboardOverview';
 import Announcements from './Announcements';
 import Complaints from './Complaints';
+import Laundry from './Laundry';
 
 const StudentDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -32,6 +33,8 @@ const StudentDashboard = () => {
         return <Announcements />;
       case 'complaints':
         return <Complaints />;
+      case 'laundry':
+        return <Laundry />;
       default:
         return null;
     }
