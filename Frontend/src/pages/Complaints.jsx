@@ -96,7 +96,7 @@ const Complaints = () => {
              <div className="text-center py-10 text-gray-500">
                <CheckCircle className="w-12 h-12 text-gray-200 mx-auto mb-3" />
                <p className="text-base font-medium text-gray-600">No complaints registered yet.</p>
-               <p className="text-sm mt-1 text-gray-400">Click "New Complaint" to log an issue.</p>
+               <p className="text-sm mt-1 text-gray-400">Click "New Complaint" to Register a Complain.</p>
              </div>
           ) : (
             <div className="space-y-4">
