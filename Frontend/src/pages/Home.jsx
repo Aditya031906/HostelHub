@@ -89,7 +89,7 @@ const Home = () => {
                         <div className="flex flex-col border border-gray-100 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                             <div className="h-48 flex items-center justify-center relative overflow-hidden group bg-gray-100">
                                 {/* Image */}
-                                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUTExMWFRUXGBcXFxgYGB0YFxcVFxcXFxcYGhgYHiggGBolHRUXITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OFxAQGy0lHR0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0rK//AABEIAJYBUQMBIgACEQACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAFAAECAwQGB//EAE8QAAEDAQQFCAUJBQUGBwEAAAEAAhEDBBIhMQVBUWGhBhMiUnGBkdEUMrHB8BVCU2JykrLS4RYjM4LCB2NzovEkQ4OTs9M0RKPD4uPyF//EABkBAAMBAQEAAAAAAAAAAAAAAAABAgMEBf/EACcRAAICAgICAgIBBQAAAAAAAAABAhEDEhMhMVEEQTJhIhQjcYHB/9oADAMBAAIRAxEAPwDlzXvYz3HPVjJ7BvwVlOosDhBjw37Fc0EZiDv8vjUoKQUpVfjJXNqTrQxryr2vSaGEqVIu9VpcZGQnXs19iP8AJuvTpurXgBWJYKeQAwx6Tpa0kkZnNczZLW9h6Li3sMLZYrU1nOMPSDqgDpEi6D6w2unaPes5x2VGkJUeiaP0iKhIc5jSI6Mm8JGsnDHUBOvYiYXnlk02KcAMZUJLsHAiC5wMgk4kQk90LrtCaepvY1r74eBJvsIwAmZ1iNa8z5GCa7ijpWVBgMTmgNyajaqb/Vc132XA79R3hWBwXE1kX0PYrbZBI7UE5I0ZsdE7Q78bl0tN29BuRrQLDZx9SfEk+9UpzWN/5X/Rcjs0mznUqnFwzRUsCz1qKeLLK+zSOW/JhLg4XXtDmnMEAgjeDgUC0JZP3Mte9h5yvhN6nAr1A0XHeqAAB0C3JdNTpYoVoWn+4H26//AF6q7Y5JKLG1CU0V9Mesy8OtTPE034gbmueVOz1WPN1rze6pEPA3sIDh4LWcNSjaKLXscHNa4BriA4AwQ0wROR3rox5G12Y5caT6MVCveY10ObeEw4C8O2CU97epWTRc0qZa9wJY09I842S0Z3ulG4OAT1LBWHzA8bWET3tfEdxKjLla8GuGGNfkJr0/OLHRrXnObIkGA2C14gC9LXQcydWxX3SuaU5p9ndFQkrRbf7EgFWnCXI/srVfRYG7093eoXwMSY/RSZXYXXb7b0Xrs9KJiYW0E5fRlPIo+WPCcdnx8BYtLaZp2YtD2ucXAkXYiAYxJPuXHWnT9Uuc5j3tLifnEw2ZAiIwyXZjwSas8/N8yK6O9LlW96D6P5U0XMY2rfa8Boc4gXXOiCejlJxyAC2i3sL3tlha2Lpa68507WgYBuildYourHomePage With Base64 Images!" alt="Sports Area" className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
+                                <img src="https://img3.khelomore.com/venues/1683/coverphoto/1040x490/Screenshot-2023-08-21-155936.jpg" alt="Sports Area" className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
                             </div>
                             <div className="p-5 flex-1 flex flex-col">
                                 <h4 className="text-lg font-bold text-gray-800 mb-2">Sports Area</h4>
@@ -115,7 +115,7 @@ const Home = () => {
                         <div className="flex flex-col border border-gray-100 rounded-lg overflow-hidden hover:shadow-md transition-shadow">
                             <div className="h-48 flex items-center justify-center relative overflow-hidden group bg-gray-100">
                                 {/*Image */}
-                                <img src="https://turftown.in/_next/image?url=https%3A%2F%2Fturftown.s3.ap-south-1.amazonaws.com%2Fsuper_admin%2Ftt-1744736274650.webp&w=828&q=75" alt="Study Area" className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
+                                <img src="https://cns.utexas.edu/sites/default/files/uploads/images/default/b2ap3_large_wu-photos-welch2.jpeg" alt="Study Area" className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105" />
                             </div>
                             <div className="p-5 flex-1 flex flex-col">
                                 <h4 className="text-lg font-bold text-gray-800 mb-2">Study Room</h4>
