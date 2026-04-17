@@ -1,144 +1,115 @@
-# 🏨 HostelHub – Hostel Web Application
+# HostelHub 🏨
 
-## 📌 Overview
-HostelHub is a MERN stack-based web application designed to simplify and digitize hostel management. It provides a centralized platform for students and administrators to manage daily hostel activities such as meal tracking, feedback submission, expense management, and complaint handling.
+**HostelHub** is a comprehensive, full-stack Hostel Management System designed to bridge the gap between hostel administration and students. It provides a beautiful, modern dashboard for both admins and students to manage daily hostel life, ranging from food menus to complaints and expenses.
 
----
+## 🌟 Key Features
 
-## 🎯 Problem Statement
-Traditional hostel systems face several issues:
+### For Students
+* **Real-time Food Menu & Reviews:** View today's breakfast, lunch, and dinner menu directly from the administration, and provide live, rated feedback.
+* **Profile Management:** Instantly update emergency contacts and personal details.
+* **Complaints System:** Easily track and log hostel complaints for fast resolution.
+* **Dashboard Overview:** Get a quick view of pending fees, room details, and recent announcements.
 
-- Lack of proper communication  
-- No structured food feedback system  
-- Difficulty in tracking shared expenses  
-- Manual complaint handling  
+### For Administrators
+* **Student Directory:** Beautifully organized overview of all registered students, their fee statuses, and parent contact details.
+* **Live Food & Meals Manager:** Set the daily menu for Breakfast, Lunch, and Dinner. Changes reflect instantly on the student portal.
+* **Centralized Management:** Modular dashboards to handle expenses, announcements, and lost & found items.
 
-HostelHub solves these problems by offering a modern, organized, and user-friendly digital solution.
+## 🛠 Tech Stack
 
----
+* **Frontend:** React.js, Vite, Tailwind CSS, Lucide React (Icons)
+* **Backend:** Node.js, Express.js
+* **Database:** PostgreSQL (Hosted on Render via `pg-pool`)
+* **Authentication:** Firebase Auth
+* **Deployment:**
+  * Frontend: Vercel
+  * Backend: Render
 
-## 🚀 Features
-- 🔐 User Authentication (Login/Register with JWT)
-- 🍽️ Daily & Weekly Menu Display
-- ⭐ Meal Feedback System (Rating + Comments)
-- 💰 Expense Management & Tracking
-- 📢 Complaint Management System
-- 📦 Lost & Found Module (Optional)
-- 👨‍💼 Admin Controls for Managing Data
+## 📋 Prerequisites
 
----
+Before running the application locally, ensure you have the following installed:
+* Node.js (v16.0 or higher)
+* PostgreSQL
+* A Firebase Project (for Authentication)
 
-## 🛠️ Tech Stack
+## 🚀 Getting Started
 
-### Frontend
-- React.js  
-- HTML, CSS / Tailwind CSS  
-- Axios  
+### 1. Clone the repository
+```bash
+git clone https://github.com/Aditya031906/HostelHub.git
+cd HostelHub
+```
 
-### Backend
-- Node.js  
-- Express.js  
+### 2. Backend Setup
+1. Open a terminal and navigate to the backend folder:
+   ```bash
+   cd Backend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the `Backend` directory and add your PostgreSQL database URL:
+   ```env
+   DATABASE_URL=postgresql://your_db_username:your_db_password@host:port/database_name
+   ```
+4. Start the backend server (This will also automatically auto-initialize your database tables via `db.js`):
+   ```bash
+   npm run dev
+   ```
 
-### Database
-- MongoDB Atlas  
-- Mongoose  
+### 3. Frontend Setup
+1. Open a new terminal and navigate to the frontend folder:
+   ```bash
+   cd Frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create a `.env` file in the `Frontend` directory with your Firebase config and Backend API URL:
+   ```env
+   VITE_FIREBASE_API_KEY=your_firebase_api_key
+   VITE_FIREBASE_AUTH_DOMAIN=your_firebase_domain
+   VITE_FIREBASE_PROJECT_ID=your_firebase_project_id
+   VITE_FIREBASE_STORAGE_BUCKET=your_firebase_bucket
+   VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+   VITE_FIREBASE_APP_ID=your_firebase_app_id
 
-### Authentication
-- JWT (JSON Web Token)  
-- bcrypt  
+   # Set this to http://localhost:5000 if running locally, or your live Render URL
+   VITE_API_URL=http://localhost:5000
+   ```
+4. Start the frontend development server:
+   ```bash
+   npm run dev
+   ```
+5. Open your browser and navigate to `http://localhost:5173/`
 
----
+## 📂 Project Structure
 
-## 🏗️ Architecture
-This project follows a Three-Tier Architecture:
-
-1. Frontend (Presentation Layer)  
-2. Backend (Business Logic Layer)  
-3. Database (Data Layer)  
-
----
-
-## 🔌 APIs Used
-
-- REST API (Custom Backend API using Node.js and Express.js)
-- Gemini API
-- Cloudinary API
-
-## 🔄 Application Flow
-1. User logs in/registers  
-2. Server validates credentials  
-3. JWT token is generated  
-4. Frontend stores token  
-5. User interacts with features  
-6. Backend verifies token and processes requests  
-
----
-
-## 🔒 Security Features
-- JWT-based authentication  
-- Password hashing using bcrypt  
-- Protected API routes  
-- Input validation  
-
----
-
-## 📁 Project Structure
-hostelhub/
+```
+HostelHub/
 │
-├── frontend/
+├── Backend/                 # Express.js REST API
 │   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── App.js
+│   │   ├── config/          # Database configuration (db.js)
+│   │   ├── controllers/     # Business logic handler functions
+│   │   ├── models/          # Database queries & table abstractions
+│   │   └── routes/          # API Endpoint routing
+│   └── index.js             # Main backend entry point
 │
-├── backend/
-│   ├── models/
-│   ├── routes/
-│   ├── controllers/
-│   ├── middleware/
-│   └── server.js
+└── Frontend/                # Vite + React Frontend Application
+    ├── src/
+    │   ├── pages/           # Detailed page views (Dashboard, Reviews, Profile, etc.)
+    │   ├── components/      # Reusable UI elements
+    │   ├── firebase.js      # Firebase connection & auth config
+    │   └── config.js        # Global configs (e.g. dynamic API_URL selection)
+    ├── tailwind.config.js   # Tailwind design tokens
+    └── package.json
+```
 
----
+## 🤝 Contribution
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page or submit PRs.
 
-## ⚙️ Installation & Setup
-
-### 1. Clone Repository
-git clone https://github.com/your-username/hostelhub.git  
-cd hostelhub  
-
-### 2. Setup Backend
-cd backend  
-npm install  
-npm start  
-
-### 3. Setup Frontend
-cd frontend  
-npm install  
-npm start  
-
----
-
-## 🌐 Environment Variables
-
-Create a `.env` file in backend:
-
-MONGO_URI=your_mongodb_connection  
-JWT_SECRET=your_secret_key  
-
----
-
-## 📈 Future Enhancements
-- Mobile application  
-- Push notifications  
-- AI chatbot integration  
-- Smart menu recommendations  
-
----
-
-## 👨‍💻 Author
-Aditya Kumar  
-
----
-
-## 📄 License
+## 📝 License
 This project is open-source and available under the MIT License.
