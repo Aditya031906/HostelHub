@@ -20,7 +20,8 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-
+// Import our new separate page component
+import AdminFoodAndMeals from './AdminFoodAndMeals';
 
 const AdminStudentsData = () => {
   const [selectedStudent, setSelectedStudent] = useState(null);
@@ -247,13 +248,6 @@ const AdminStudentsData = () => {
   );
 };
 
-const AdminFoodAndMeals = () => (
-  <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
-    <h2 className="text-xl font-bold text-gray-800 mb-4">Food and Meals</h2>
-    <p className="text-gray-600">Manage daily menus, view food reviews, and monitor mess operations.</p>
-  </div>
-);
-
 const AdminAnnouncements = () => (
   <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
     <h2 className="text-xl font-bold text-gray-800 mb-4">Announcements</h2>
@@ -281,7 +275,6 @@ const AdminLostAndFound = () => (
     <p className="text-gray-600">Manage reported lost items and update found item statuses.</p>
   </div>
 );
-
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
