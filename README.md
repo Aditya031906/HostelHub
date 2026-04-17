@@ -1,6 +1,6 @@
 # HostelHub 🏨
 
-**HostelHub** is a comprehensive, full-stack Hostel Management System designed to bridge the gap between hostel administration and students. It provides a beautiful, modern dashboard for both admins and students to manage daily hostel life, ranging from food menus to complaints and expenses.
+**HostelHub** is a full-stack Hostel Management System designed to bridge the gap between hostel administration and students. It provides a beautiful, modern dashboard for both admins and students to manage daily hostel life, ranging from food menus to complaints and expenses.
 
 ## 🌟 Key Features
 
