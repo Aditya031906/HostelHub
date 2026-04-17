@@ -51,6 +51,19 @@ export const initDB = async () => {
       );
     `);
 
+    // Create Meal Table
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS "Meal" (
+        "id" UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+        "date" DATE NOT NULL,
+        "mealType" VARCHAR(20) NOT NULL CHECK ("mealType" IN ('breakfast', 'lunch', 'dinner')),
+        "items" TEXT NOT NULL,
+        "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        UNIQUE("date", "mealType")
+      );
+    `);
+
     client.release();
     console.log('Database tables initialized securely!');
   } catch (error) {

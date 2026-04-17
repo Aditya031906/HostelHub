@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { initDB } from './src/config/db.js';
 import userRoutes from './src/routes/userRoutes.js';
 import profileRoutes from './src/routes/profileRoutes.js';
+import mealRoutes from './src/routes/mealRoutes.js';
 
 // Load environment variables
 dotenv.config();
@@ -21,6 +22,7 @@ initDB();
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/meals', mealRoutes);
 
 // Basic route to test the server
 app.get('/', (req, res) => {
