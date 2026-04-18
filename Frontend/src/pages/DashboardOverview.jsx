@@ -1,7 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Home, AlertCircle, Shirt, CreditCard, Utensils, Megaphone } from 'lucide-react';
+import { API_URL } from '../config';
 
 const DashboardOverview = ({ profileData, setActiveTab }) => {
+  const [recentAnnouncements, setRecentAnnouncements] = useState([]);
+
+  useEffect(() => {
+    fetchAnnouncements();
+  }, []);
+
+  const fetchAnnouncements = async () => {
+    try {
+      const res = await fetch(`${API_URL}/api/announcements`);
+      if (res.ok) {
+        const data = await res.json();
+        // Just take the top 2 most recent for the overview
+        setRecentAnnouncements(data.slice(0, 2));
+      }
+    } catch (err) {
+      console.error('Failed to fetch announcements:', err);
+    }
+  };
+
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    const now = new Date();
+    const diffMs = now - date;
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHrs = Math.floor(diffMins / 60);
+    const diffDays = Math.floor(diffHrs / 24);
+
+    if (diffMins < 1) return 'Just now';
+    if (diffMins < 60) return `${diffMins} min ago`;
+    if (diffHrs < 24) return `${diffHrs} hr${diffHrs > 1 ? 's' : ''} ago`;
+    if (diffDays < 7) return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+    return date.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+  };
+
   return (
     <div className="space-y-6">
       <h2 className="text-2xl font-bold text-gray-800">Welcome back, {profileData.name.split(' ')[0]}</h2>
@@ -75,28 +110,53 @@ const DashboardOverview = ({ profileData, setActiveTab }) => {
         </div>
 
         {/* Announcements Section */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col h-full">
           <div className="flex justify-between items-center mb-4">
             <h3 className="text-lg font-bold text-gray-800 flex items-center gap-2">
                <Megaphone className="w-5 h-5 text-indigo-600" />
-               Announcements
+               Recent Announcements
             </h3>
-            <button onClick={() => setActiveTab('announcements')} className="text-sm text-indigo-600 hover:text-indigo-800 font-medium">View All</button>
+            <button onClick={() => setActiveTab('announcements')} className="text-sm text-indigo-600 hover:text-indigo-800 font-bold transition-colors">View All</button>
           </div>
-          <div className="space-y-4">
-            <div className="p-4 border border-blue-100 bg-blue-50 rounded-lg border-l-4 border-l-blue-500">
-              <div className="flex justify-between items-start">
-                <h4 className="font-bold text-blue-900 leading-tight">Mandatory Hostel Meeting</h4>
-                <span className="text-[10px] bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full font-bold ml-2 shrink-0">NEW</span>
-              </div>
-              <p className="text-sm text-blue-800 mt-1">Common hall, Friday at 6:00 PM.</p>
-              <p className="text-xs text-blue-600 mt-2">Posted 2 hours ago</p>
-            </div>
-            <div className="p-4 border border-gray-100 rounded-lg">
-              <h4 className="font-bold text-gray-800">Water Supply Maintenance</h4>
-              <p className="text-sm text-gray-600 mt-1">Interrupted tomorrow 10 AM to 2 PM.</p>
-              <p className="text-xs text-gray-500 mt-2">Posted yesterday</p>
-            </div>
+          
+          <div className="space-y-3 flex-1">
+            {recentAnnouncements.length === 0 ? (
+              <p className="text-sm text-gray-500 text-center py-4">No recent announcements.</p>
+            ) : (
+              recentAnnouncements.map(a => {
+                let borderClass = 'border-gray-100';
+                let tagClass = 'bg-gray-100 text-gray-600';
+                let titleClass = 'text-gray-800';
+                let tagLabel = 'Normal';
+                
+                if (a.importance === 'urgent') {
+                  borderClass = 'border-red-200 bg-red-50 border-l-4 border-l-red-500';
+                  tagClass = 'bg-red-100 text-red-700';
+                  titleClass = 'text-red-900';
+                  tagLabel = 'Urgent';
+                } else if (a.importance === 'important') {
+                  borderClass = 'border-orange-200 bg-orange-50 border-l-4 border-l-orange-500';
+                  tagClass = 'bg-orange-100 text-orange-700';
+                  titleClass = 'text-orange-900';
+                  tagLabel = 'Important';
+                }
+
+                return (
+                  <div key={a.id} className={`p-4 border rounded-lg transition-all ${borderClass}`}>
+                    <div className="flex justify-between items-start mb-1">
+                      <h4 className={`font-bold leading-tight line-clamp-1 ${titleClass}`}>{a.title}</h4>
+                      {(a.importance === 'urgent' || a.importance === 'important') && (
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ml-2 shrink-0 ${tagClass}`}>
+                          {tagLabel}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">{a.content}</p>
+                    <p className="text-[11px] text-gray-400 font-medium mt-2">{formatDate(a.createdAt)}</p>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       </div>
