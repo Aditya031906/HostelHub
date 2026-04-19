@@ -96,6 +96,25 @@ export const initDB = async () => {
       );
     `);
 
+    // Create Complaint Table
+    await client.query(`
+      CREATE TABLE IF NOT EXISTS "Complaint" (
+        "id" UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+        "studentName" VARCHAR(255) NOT NULL,
+        "title" VARCHAR(500) NOT NULL,
+        "description" TEXT NOT NULL,
+        "status" VARCHAR(20) NOT NULL DEFAULT 'Pending' CHECK ("status" IN ('Pending', 'Received', 'Resolved')),
+        "importance" VARCHAR(20) NOT NULL DEFAULT 'normal' CHECK ("importance" IN ('low', 'normal', 'important', 'urgent')),
+        "createdAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        "updatedAt" TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+      );
+    `);
+
+    // In case the Complaint table was already created before we added importance
+    await client.query(`
+      ALTER TABLE "Complaint" ADD COLUMN IF NOT EXISTS "importance" VARCHAR(20) NOT NULL DEFAULT 'normal' CHECK ("importance" IN ('low', 'normal', 'important', 'urgent'));
+    `);
+
     client.release();
     console.log('Database tables initialized securely!');
   } catch (error) {
