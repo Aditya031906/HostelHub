@@ -28,6 +28,7 @@ import { API_URL } from '../config';
 // Import our new separate page component
 import AdminFoodAndMeals from './AdminFoodAndMeals';
 import AdminAnnouncements from './AdminAnnouncements';
+import AdminComplaints from './AdminComplaints';
 
 const AdminStudentsData = () => {
   const [selectedStudent, setSelectedStudent] = useState(null);
@@ -379,13 +380,6 @@ const AdminStudentsData = () => {
     </div>
   );
 };
-
-const AdminComplaints = () => (
-  <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
-    <h2 className="text-xl font-bold text-gray-800 mb-4">Complaints Resolve</h2>
-    <p className="text-gray-600">Review and resolve student complaints regarding room, electricity, plumbing, etc.</p>
-  </div>
-);
 
 const AdminExpenses = () => (
   <div className="p-6 bg-white rounded-xl shadow-sm border border-gray-100">
